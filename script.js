@@ -1,61 +1,22 @@
 function recipe_random() {
-    var add_ingredients1 = [["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"],
+    var add_ingredients = [["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"],
                            ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
                            ["сыр", "кетчуп", "петрушка", "капуста", "майонез", "гречка","макароны","яичница"],
                            ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
                            ["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"]];
+    var add_recipe = document.getElementById("recipe"); //создаем ссылку add_recipe на элемент под id recipe
 
-    var recipe_random = [];
-    for (var i = 0; i < add_ingredients1.length ; i++) {
-        var random = Math.floor(Math.random() * add_ingredients1[i].length);
-        var a = add_ingredients1[i][random];
-        recipe_random.push(a);
-    }
-    
-    var recipe = [];
-    for (var i = 0; i < 7; i++) {
-        recipe.push(recipe_random[i]);
-    }
-    var add_recipe = document.getElementById("recipe1");
-    add_recipe.innerHTML = recipe.join("<br>");
+    for (var i = 0; i < 4; i++) { //цикл по всем вложенным элемента в add_ingredients
 
-    var add_ingredients2 = [["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"],
-                           ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
-                           ["сыр", "кетчуп", "петрушка", "капуста", "майонез", "гречка","макароны","яичница"],
-                           ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
-                           ["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"]];
+        for (var j = 0; j < add_ingredients.length ; j++) { //вложенный цикл по каждому вложенному элементу в массиве
+            var li = document.createElement('li'); //добавляем li элемент
+            var random = Math.floor(Math.random() * add_ingredients[j].length); //радомно выбираем число изходя из длины нашего вложенного массива
+            li.innerHTML = add_ingredients[j][random]; //изменяем содержимое li с каждым новым циклом j
+            add_recipe.appendChild(li); //добавляем дочерний элемент в ссылку(переменную) add_recipe
+        }
 
-    var recipe_random = [];
-    for (var i = 0; i < add_ingredients2.length ; i++) {
-        var random = Math.floor(Math.random() * add_ingredients2[i].length);
-        var a = add_ingredients2[i][random];
-        recipe_random.push(a);
+        var br = document.createElement('br'); //создаем ссылку на элемент(тег) <br>
+        add_recipe.appendChild(br); //добавляем элемент br в элемент add_recipe
     }
-    var recipe = [];
-    for (var i = 0; i < 7; i++) {
-        recipe.push(recipe_random[i]);
-    }
-    var add_recipe = document.getElementById("recipe2");
-    add_recipe.innerHTML = recipe.join("<br>");
-
-    var add_ingredients3 = [["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"],
-                           ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
-                           ["сыр", "кетчуп", "петрушка", "капуста", "майонез", "гречка","макароны","яичница"],
-                           ["куриная котлета", "рыбная котлета", "свиная котлета", "говяжья котлета", "сырое мясо", "шашлык","телятина","баранина"],
-                           ["болучка с кунжутом", "славянский хлеб", "сладкий хлеб", "французская булочка", "бородинский хлеб", "хлеб домашний","тост"]];
-
-    var recipe_random = [];
-    for (var i = 0; i < add_ingredients3.length ; i++) {
-        var random = Math.floor(Math.random() * add_ingredients3[i].length);
-        var a = add_ingredients3[i][random];
-        recipe_random.push(a);
-    }
-
-    var recipe = [];
-    for (var i = 0; i < 7; i++) {
-        recipe.push(recipe_random[i]);
-    }
-    var add_recipe = document.getElementById("recipe3");
-    add_recipe.innerHTML = recipe.join("<br>");
 }
-window.onload = recipe_random;
+window.onload = recipe_random; //функция запустится тогда, когда загрузится полностью страница html
